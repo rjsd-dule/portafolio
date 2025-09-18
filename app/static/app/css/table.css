@@ -1,0 +1,159 @@
+/* Encabezado */
+table.dataTable thead {
+  background: linear-gradient(to right, #3b82f6, #4f46e5);
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+/* Hover fila */
+table.dataTable tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Inputs */
+.dataTables_wrapper .dataTables_filter input {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Select */
+.dataTables_wrapper .dataTables_length select {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+}
+
+/* Paginación */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  margin: 0 2px;
+  padding: 0.2rem 0.6rem;
+  color: #374151 !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background-color: #4f46e5 !important;
+  color: white !important;
+  border: 1px solid #4f46e5;
+}
+
+/*-------------------------------------------------*/
+
+/* Botón de acción: el padre debe ser posicionado */
+.action-btn {
+  position: relative;
+  display: inline-flex; /* para centrar el icono */
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; /* 40px */
+  height: 2.5rem;
+  border-radius: 9999px; /* circular */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Tooltip oculto por defecto */
+.action-btn span {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translate(8px, -50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+}
+
+/* Mostrar en hover con animación */
+.action-btn:hover span {
+  opacity: 1;
+  transform: translate(-85%, -40px);
+}
+
+.action-btn i {
+  color: inherit; /* evita heredar de text-white */
+}
+
+.action-btn.delete-btn i {
+  color: #ef4444 !important; /* rojo tailwind red-500 */
+}
+
+/*-------------------css de search datatable-------------------*/
+.dataTables_wrapper .dataTables_filter input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+.dataTables_wrapper .dataTables_filter label {
+  font-weight: 500;
+  color: #555;
+  font-size: 14px;
+}
+.dataTables_wrapper .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* ---------------------------Estilo general del input -------------------------*/
+/* Contenedor del input para colocar el ícono */
+.dataTables_filter {
+  position: relative;
+}
+
+/* Input del search */
+.dataTables_filter input {
+  width: 220px;
+  padding: 8px 15px 8px 40px; /* espacio para el ícono */
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 14px;
+  transition: all 0.4s ease;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Ícono dentro del input */
+.dataTables_filter i.fa-search {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 16px;
+  pointer-events: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Focus en el input */
+.dataTables_filter input:focus {
+  width: 280px;
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+  background-color: #fff;
+  outline: none;
+}
+
+/* Cambio de color y leve desplazamiento del ícono al enfocar */
+.dataTables_filter input:focus + i.fa-search {
+  color: #3498db;
+  transform: translateY(-50%) translateX(3px);
+}

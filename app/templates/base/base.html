@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+    {% include 'base/head.html' %}
+    {% block extra_css %}{% endblock %}
+    <body>
+        {% include 'base/header.html' %}
+        <main class="main-content">
+            {% include 'base/navbar.html' %}
+            {% block content %}{% endblock %}
+            {% include 'base/footer.html' %}
+        </main>
+        <script src="{% static 'app/js/dashboard.js' %}"></script>
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,76 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Actualizar Proyecto{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/statcard.css' %}">
+
+<div class="content-area">
+    <div class="header">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+
+                    {% for field in form.visible_fields %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+
+                            {% if field.name == 'image' %}
+                                <!-- Preview de imagen actual -->
+                                {% if form.instance.image %}
+                                    <img id="imagePreview" src="{{ form.instance.image.url }}" alt="Imagen del proyecto" class="image-preview">
+                                    <div>
+                                        <input type="checkbox" id="deleteImage" name="delete_image">
+                                        <label for="deleteImage">Eliminar imagen actual</label>
+                                    </div>
+                                {% else %}
+                                    <img id="imagePreview" src="{% static 'app/img/no-image.png' %}" alt="Sin imagen" class="image-preview">
+                                {% endif %}
+                                {{ field }}
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
+
+                            {% if field.help_text %}
+                                <small style="color: #6b7280;">{{ field.help_text }}</small>
+                            {% endif %}
+
+                            {% if field.errors %}
+                                <div class="errorlist">
+                                    {% for error in field.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <div class="flex justify-end mt-6">
+                        <button type="submit" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
+                            Guardar Proyecto
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+const imageInput = document.querySelector('input[name="image"]');
+const imagePreview = document.getElementById('imagePreview');
+const deleteCheckbox = document.getElementById('deleteImage');
+
+if(imageInput) {
+    imageInput.addEventListener('change', (event) => {
+        const [file] = event.target.files;
+        if(file) {
+            imagePreview.src = URL.createObjectURL(file);
+            if(deleteCheckbox) deleteCheckbox.checked = false;
+        }
+    });
+}
+</script>
+{% endblock %}

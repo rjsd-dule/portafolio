@@ -1,0 +1,30 @@
+{% extends 'auth/login_base.html' %}
+{% load static %}
+{% block title %}Medicos{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/register.css' %}">
+<div class="register-container">
+  <h2>Crear nueva cuenta</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+      {% if field.errors %}
+        <div style="color: #d32f2f; font-size: 0.9rem; margin-top: 4px;">
+          {{ field.errors.as_text|striptags }}
+        </div>
+      {% endif %}
+    {% endfor %}
+    <button type="submit">Registrar</button>
+  </form>
+  {% if messages %}
+    <div class="messages" role="alert">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

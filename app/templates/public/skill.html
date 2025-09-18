@@ -1,0 +1,25 @@
+<h2 class="main-title">Habilidades Técnicas</h2>
+<section class="skills-container">
+  {% for category in categories %}
+    {% if category.category.all %}
+      <article class="skill-card">
+        <header class="skill-header">
+          <div class="skill-icon-container" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 0 20" />
+              <path d="M12 2a15.3 15.3 0 0 0 0 20" />
+            </svg>
+          </div>
+          <h3 class="skill-title">{{ category.name }}</h3>
+        </header>
+        <div class="skill-tags">
+          {% for skill in category.category.all %}
+            <span class="skill-tag">{{ skill.name }}</span>
+          {% endfor %}
+        </div>
+      </article>
+    {% endif %}
+  {% endfor %}
+</section>

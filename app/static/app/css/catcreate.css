@@ -1,0 +1,41 @@
+.content-area {
+  margin: 50px auto;
+}
+
+.content-area label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.content-area input[type="text"],
+.content-area input[type="email"],
+.content-area input[type="number"],
+.content-area select,
+.content-area textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.content-area button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: #4f46e5;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.content-area button[type="submit"]:hover {
+  background: #4f46e5;
+}

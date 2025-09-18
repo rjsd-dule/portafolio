@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Categoria{% endblock %}
+{% block extra_css %}
+    {% include "includes/datatables_css.html" %}
+{% endblock %}
+{% block content %}
+<div class="content-area px-4 sm:px-6 lg:px-8">
+    <div class="header">
+        <div class="stat-card bg-white rounded-2xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Listado de Gategorias</h2>
+
+            <!-- Botón a la derecha usando CSS -->
+            <div class="table-header">
+                <button id="addnew" data-endpoint="categories">
+                    <i class="fas fa-plus"></i> Agregar Categoría
+                </button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table id="dataTable" class="display nowrap w-full table-auto min-w-full">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categories in cat %}
+                        <tr id="row-{{ categories.id }}">
+                            <td>{{ categories.id }}</td>
+                            <td>{{ categories.name }}</td>
+                            <td class="px-4 py-3 text-gray-700 flex flex-wrap gap-3 justify-start">
+                                <a href="{% url 'category_update' categories.id %}" class="action-btn flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full shadow-md">
+                                    <i class="fas fa-edit"></i>
+                                    <span>Actualizar</span>
+                                </a>
+                                <a href="" class="action-btn delete-btn flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md" 
+                                    data-id="{{ categories.id }}"
+                                    data-endpoint="categories"
+                                    id="row-{{ categories.id }}">
+                                    <i class="fas fa-trash-alt"></i>
+                                    <span>Eliminar</span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DataTables -->
+{% include "includes/datatables_js.html" %}
+<script type="module" src="{% static 'app/js/delete.js' %}"></script> 
+{% endblock %}

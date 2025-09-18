@@ -1,0 +1,27 @@
+
+{% extends 'base/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="content-area">
+    <div class="header">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">{{ dt.num_experiences }}+</div>
+                <div class="stat-label">Experiencias</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ dt.num_categories }}+</div>
+                <div class="stat-label">Proyectos Completados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ dt.num_skills }}</div>
+                <div class="stat-label">Tecnologías Dominadas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"></div>
+                <div class="stat-label">Certificaciones</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

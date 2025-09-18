@@ -1,0 +1,38 @@
+{% extends 'auth/login_base.html' %}
+{% block title %}Registro{% endblock %}
+{% block content %}
+<div class="form-section">
+        <div class="logo">
+            <span>Inicia<span>sesión</span></span>
+        </div>
+        
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {% for field in form %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+              <div class="field-error" style="color: #d32f2f; font-size: 0.9rem; margin-top: -12px; margin-bottom: 12px;">
+                {{ field.errors.as_text|striptags }}
+              </div>
+            {% endif %}
+          {% endfor %}
+          <button type="submit" class="login-button">Iniciar sesión</button>
+        </form>
+
+        {% if messages %}
+        <div class="messages" role="alert">
+          <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        
+        <div class="signup-link">
+          <a href="{% url 'register_user' %}">Regístrate ahora</a> |
+          <a href="">¿Olvidaste tu contraseña?</a>
+        </div>
+    </div>
+{% endblock %}

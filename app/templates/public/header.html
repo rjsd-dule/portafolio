@@ -1,0 +1,65 @@
+{% load static %}
+<header>
+    <div class="header-content">
+        <h1 class="header-title">{{ user.nombre }} {{ user.apellido }}</h1>
+        <p class="header-subtitle">{{ user.profesion }}</p>
+        <p class="header-description">
+            {{ user.bio|default_if_none:'' }}
+        </p>
+    </div>
+    
+    <div class="profile-section">
+        <img 
+            src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}/static/img/default-profile.png{% endif %}"
+            alt="Foto de perfil de {{ user.nombre }} {{ user.apellido }}"
+            class="profile-image"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        
+        <div 
+            aria-label="Foto de perfil con iniciales DL"
+            class="profile-avatar"
+            style="display: none;"
+        >
+            DL
+        </div>
+        
+        <nav class="social-nav" aria-label="Redes sociales">
+            <a href="{{ user.email }}" aria-label="Enviar correo a Juan Pérez" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" role="img" aria-hidden="true">
+                    <title>{{ user.email }}</title>
+                    <path d="M4 4h16v16H4z" fill="none"/>
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+            </a>
+            
+            <a href="{{ user.url_repository|default_if_none:'' }}" target="_blank" rel="noopener" aria-label="" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="social-icon" viewBox="0 0 24 24" role="img" aria-hidden="true">
+                    <title>GitHub de {{ user.nombre }} {{ user.apellido }}</title> 
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.263.82-.583 0-.288-.01-1.05-.015-2.06-3.338.724-4.042-1.61-4.042-1.61-.546-1.388-1.334-1.757-1.334-1.757-1.09-.745.082-.73.082-.73 1.204.085 1.838 1.236 1.838 1.236 1.07 1.834 2.81 1.303 3.495.996.11-.775.418-1.303.762-1.603-2.665-.304-5.466-1.335-5.466-5.934 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.47 11.47 0 0 1 3-.404c1.02.005 2.045.138 3 .404 2.29-1.552 3.295-1.23 3.295-1.23.655 1.653.244 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.48 5.922.43.372.81 1.1.81 2.22 0 1.606-.015 2.9-.015 3.293 0 .323.216.7.825.58C20.565 21.796 24 17.298 24 12c0-6.63-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            
+            <a href="{{ user.url_linkedin|default_if_none:'' }}" target="_blank" rel="noopener" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="social-icon" viewBox="0 0 24 24" role="img" aria-hidden="true">
+                    <title>LinkedIn de {{ user.nombre }} {{ user.apellido }}</title>
+                    <path d="M20.447 20.452h-3.554v-5.568c0-1.327-.025-3.037-1.852-3.037-1.855 0-2.137 1.445-2.137 2.937v5.668h-3.554v-11.5h3.414v1.57h.049c.476-.9 1.637-1.852 3.37-1.852 3.6 0 4.268 2.37 4.268 5.452v6.33zm-14.358-13.1c-1.145 0-2.07-.927-2.07-2.07 0-1.14.925-2.07 2.07-2.07 1.146 0 2.07.93 2.07 2.07 0 1.143-.925 2.07-2.07 2.07zm1.777 13.1h-3.553v-11.5h3.553v11.5zm16.133-20.452h-22.457v22.447h22.457v-22.447z"/>
+                </svg>
+            </a>
+        </nav>
+        
+        {% if user.profile_document %}
+            <a href="{{ user.profile_document.url }}" download class="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="download-icon" fill="none" 
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                    stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true" role="img">
+                    <title>Icono descargar</title>
+                    <path d="M12 5v14m7-7l-7 7-7-7"/>
+                    <path d="M5 19h14" />
+                </svg>
+                Descargar CV
+            </a>
+            {% endif %}
+
+    </div>
+</header>
