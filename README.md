@@ -46,10 +46,6 @@ python manage.py makemigrations app
 python manage.py migrate
 ```
 
-> Reemplaza `app` por el nombre de tu aplicación Django principal.
-
----
-
 ## Ejecución en local
 
 ```bash

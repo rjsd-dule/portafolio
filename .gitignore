@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+media/profile_docs/*
+
+media/project/*
+
+#media/profile_docs/**
+#media/project/**
