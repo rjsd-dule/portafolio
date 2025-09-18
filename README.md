@@ -55,3 +55,78 @@ python manage.py runserver
 Abre tu navegador en: `http://127.0.0.1:8000/`
 
 ---
+## Ejecución con Docker (opcional)
+
+Este proyecto incluye un archivo `Dockerfile` para facilitar su despliegue en contenedores. Si prefieres ejecutar la aplicación usando Docker, sigue estos pasos:
+
+1. **Construye la imagen del contenedor:**
+
+   ```bash
+   docker build -t portafolio .
+   ```
+
+2. **Ejecuta el contenedor:**
+
+   ```bash
+   docker run -p 8000:8000 portafolio
+   ```
+
+La aplicación estará disponible en `http://localhost:8000/`.
+
+---
+
+## Estructura del proyecto
+
+```plaintext
+portafolio/                    # Carpeta principal del proyecto
+├── app/                       # Aplicación principal
+│   ├── backends/
+│   │   └── email_backend.py
+│   ├── forms/
+│   │   ├── CategoryForm.py
+│   │   ├── ExperienceForm.py
+│   │   └── LoginForm.py
+│   │   └── otros_form.py
+│   ├── middleware/
+│   │   └── security.py
+│   ├── models/
+│   │   └── (tus archivos de modelos)
+│   ├── static/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   ├── templates/
+│   │   └── (archivos HTML)
+│   ├── utils/
+│   ├── views/
+│   │   ├── auth.py
+│   │   ├── change_password.py
+│   │   └── experience.py
+│   │   └── otras_vistas.py
+├── portafolio/                # Configuración global del proyecto
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
+├── manage.py
+├── requirements.txt
+├── Dockerfile
+└── .gitignore
+```
+## Estructura del proyecto
+
+* **Despliegue**: Compatible con Docker para entornos de desarrollo
+* **Arquitectura**: Patrón MVT (Model-View-Template) de Django
+* **Organización**: 
+  - Aplicación principal modular con separación de concerns
+  - Backends personalizados para email
+  - Middleware de seguridad personalizado
+  - Formularios organizados por funcionalidad
+* **Configuración**: Settings separados para desarrollo y producción
+
+## Imagen
+
+> http://127.0.0.1:8000/login.
+
+![Grafo de dependencias](media/img/dash.PNG)
