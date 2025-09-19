@@ -4,11 +4,9 @@ __pycache__/
 *.pyd
 
 media/profile_docs/*
+media/profile_pics/*
 
-media/project/*
-
-#media/profile_docs/**
-#media/project/**
+media/projects/**
 
 # Carpeta de migraciones (dentro de app)
 #portafolio/app/migrations/
