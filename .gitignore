@@ -3,8 +3,8 @@ __pycache__/
 *.pyo
 *.pyd
 
-media/profile_docs/*
-media/profile_pics/*
+media/profile_docs/**
+media/profile_pics/**
 
 media/projects/**
 
