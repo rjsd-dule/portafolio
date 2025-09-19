@@ -6,7 +6,16 @@ __pycache__/
 media/profile_docs/*.pdf
 !media/profile_docs/.gitkeep
 
-media/projects/**
+media/profile_pics/*.png
+media/profile_pics/*.jpg
+media/profile_pics/*.jpeg
+!media/profile_pics/.gitkeep
+
+media/projects/*.png
+media/projects/*.jpg
+media/projects/*.jpeg
+!media/projects/.gitkeep
+
 
 # Carpeta de migraciones (dentro de app)
 #portafolio/app/migrations/
