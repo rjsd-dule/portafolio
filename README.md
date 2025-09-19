@@ -127,6 +127,6 @@ portafolio/                    # Carpeta principal del proyecto
 
 ## Imagen
 
-> http://127.0.0.1:8000/login.
+> http://localhost:8000/profile/
 
 ![Grafo de dependencias](media/img/dash.PNG)

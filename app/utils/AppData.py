@@ -7,6 +7,7 @@ class AppData:
         self._experiences = None
         self._skills = None
         self._projects = None
+        self._pro = None
         self._users = None
 
     @property
@@ -32,6 +33,14 @@ class AppData:
         if self._projects is None:
             self._projects = Project.objects.all().order_by("user")
         return self._projects
+
+    @property
+    def pro(self):
+        if self._pro is None:
+            self._pro = (
+                Project.objects.prefetch_related("category").all().order_by("user")
+            )
+        return self._pro
 
     @property
     def users(self):

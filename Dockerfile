@@ -16,11 +16,12 @@ COPY . .
 
 RUN python manage.py collectstatic --noinput
 
+# Copia script de arranque
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 # Expone el puerto
 EXPOSE 8000
 
-# Ejecuta el comando para iniciar el servidor de manera local
-#CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-# Para Producion
-CMD ["gunicorn", "portafolio.wsgi:application", "--bind", "0.0.0.0:8000"]
+# Usa entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]

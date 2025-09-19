@@ -9,3 +9,9 @@ media/project/*
 
 #media/profile_docs/**
 #media/project/**
+
+# Carpeta de migraciones (dentro de app)
+#portafolio/app/migrations/
+
+# Base de datos SQLite
+db.sqlite3

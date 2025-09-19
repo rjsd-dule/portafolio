@@ -11,6 +11,7 @@ def portafolio_view(request):
         {
             "user": data.users,
             "project": data.projects,
+            "pro": data.pro,
             "categories": data.categories,
             "exp": data.experiences,
             "skills": data.projects,

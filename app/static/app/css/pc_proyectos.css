@@ -1,0 +1,8 @@
+<style>
+    .fade {
+      transition: all 0.4s ease;
+    }
+    .btn-transition {
+      transition: all 0.3s ease;
+    }
+  </style>
