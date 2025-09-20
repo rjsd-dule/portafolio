@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  web:
+    image: portafolio
+    container_name: portafolio_container
+    ports:
+      - "81:8000"
+    restart: always
